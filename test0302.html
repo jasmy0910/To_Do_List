@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="test.css">
         <title>0302</title>
     </head>
     <bady>
@@ -10,7 +11,7 @@
         <div>
         </div>
         <h2>Done!</h2>
-        <div>
+        <div id="done">
         </div>
     </bady>
     <script>
@@ -26,8 +27,12 @@
                 checkbox.setAttribute('type','checkbox');
                 const labal=document.createElement('labal');
                 labal.innerHTML=inputTask.value;
+                const del=document.createElement('img');
+                del.setAttribute("src","./close.png")
+                del.setAttribute("style","display:none")
                 p.appendChild(checkbox);
                 p.appendChild(labal);
+                p.appendChild(del);
                 div[0].insertAdjacentElement('afterbegin',p);
                
                 checkbox.addEventListener('click',function(){
@@ -36,8 +41,22 @@
                     }else{
                         div[0].insertAdjacentElement('afterbegin',p);
                     }
-                })              
-                
+                }) 
+
+                p.addEventListener('mouseover',function(){
+                    del.setAttribute("style","display:black")
+                })             
+                p.addEventListener('mouseleave',function(){
+                    del.setAttribute("style","display:none")
+                })  
+                del.addEventListener('click',function(){
+                    if (checkbox.checked!=false){
+                        div[1].removeChild(p);
+                    }else{
+                        div[0].removeChild(p);
+                    }
+                }) 
+
                 inputTask.value="";
             }
         }
