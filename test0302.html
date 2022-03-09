@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="test.css">
-        <title>0302</title>
-    </head>
-    <bady>
-        <input type="text" id="inputTask">
-        <button onclick="addTask()">Add</button>
-        <h2>To Do List</h2>
-        <div>
-        </div>
-        <h2>Done!</h2>
-        <div id="done">
-        </div>
-    </bady>
-    <script>
-        async function addTask(){
-            const inputTask=document.getElementById('inputTask');
-            // console.dir(inputTask);
-            if (inputTask.value==""){
-                alert("You didn't enter anything!")
-            }else{
-                const div=document.querySelectorAll('div');
-                const p=document.createElement('p');
-                const checkbox=document.createElement('input');
-                checkbox.setAttribute('type','checkbox');
-                const labal=document.createElement('labal');
-                labal.innerHTML=inputTask.value;
-                const del=document.createElement('img');
-                del.setAttribute("src","./close.png")
-                del.setAttribute("style","display:none")
-                p.appendChild(checkbox);
-                p.appendChild(labal);
-                p.appendChild(del);
-                div[0].insertAdjacentElement('afterbegin',p);
-               
-                checkbox.addEventListener('click',function(){
-                    if (checkbox.checked!=false){
-                        div[1].insertAdjacentElement('afterbegin',p);
-                    }else{
-                        div[0].insertAdjacentElement('afterbegin',p);
-                    }
-                }) 
 
-                p.addEventListener('mouseover',function(){
-                    del.setAttribute("style","display:black")
-                })             
-                p.addEventListener('mouseleave',function(){
-                    del.setAttribute("style","display:none")
-                })  
-                del.addEventListener('click',function(){
-                    if (checkbox.checked!=false){
-                        div[1].removeChild(p);
-                    }else{
-                        div[0].removeChild(p);
-                    }
-                }) 
+<head>
+    <link rel="stylesheet" href="test.css">
+    <title>0302</title>
+</head>
+<bady>
+    <input type="text" id="inputTask">
+    <button onclick="addTask()">Add</button>
+    <h2>To Do List</h2>
+    <div>
+    </div>
+    <h2>Done!</h2>
+    <div id="done">
+    </div>
+</bady>
+<script>
+    async function addTask() {
+        const inputTask = document.getElementById('inputTask');
+        // console.dir(inputTask);
+        if (inputTask.value == "") {
+            alert("You didn't enter anything!")
+        } else {
+            const div = document.querySelectorAll('div');
+            const p = document.createElement('p');
+            const checkbox = document.createElement('input');
+            checkbox.setAttribute('type', 'checkbox');
+            const labal = document.createElement('labal');
+            labal.innerHTML = inputTask.value;
+            const del = document.createElement('img');
+            del.setAttribute("src", "./close.png")
+            del.setAttribute("style", "display:none")
+            p.appendChild(checkbox);
+            p.appendChild(labal);
+            p.appendChild(del);
+            div[0].insertAdjacentElement('afterbegin', p);
 
-                inputTask.value="";
-            }
+            checkbox.addEventListener('click', function () {
+                if (checkbox.checked != false) {
+                    div[1].insertAdjacentElement('afterbegin', p);
+                } else {
+                    div[0].insertAdjacentElement('afterbegin', p);
+                }
+            })
+
+            p.addEventListener('mouseover', function () {
+                del.setAttribute("style", "display:black")
+            })
+            p.addEventListener('mouseleave', function () {
+                del.setAttribute("style", "display:none")
+            })
+            del.addEventListener('click', function () {
+                if (checkbox.checked != false) {
+                    div[1].removeChild(p);
+                } else {
+                    div[0].removeChild(p);
+                }
+            })
+
+            inputTask.value = "";
         }
-    </script>
+    }
+</script>
+
 </html>
